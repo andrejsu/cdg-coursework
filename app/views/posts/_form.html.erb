@@ -1,0 +1,13 @@
+<%= form_with model: post do |f| %>
+  <div class='field'>
+    <%= f.hidden_field :image, value: post.cached_image_data, id: nil %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :description %>
+    <%= f.text_area :description, placeholder: :description %>
+  </div>
+
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,10 @@
+<h1 class='title'>Posts</h1>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= image_tag post.image_url %>
+      <p><%= post.description %></p>
+    </li>
+  <% end %>
+</ul>
