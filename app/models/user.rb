@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true, uniqueness: { case_sensitive: false }
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :bio, presence: true, length: { maximum: 300 }
+  validates :name, length: { maximum: 50 }
+  validates :bio, length: { maximum: 300 }
 end
