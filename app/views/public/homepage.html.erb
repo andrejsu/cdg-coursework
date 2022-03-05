@@ -1,1 +1,4 @@
-<h1 class="text-3xl font-bold">Hello world!</h1>
+<% if user_signed_in? %>
+  <%= link_to 'Create post', new_post_path %>
+  <%= link_to 'View posts', posts_path %>
+<% end %>
