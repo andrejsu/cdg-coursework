@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'public#homepage'
 
-  resources :posts, only: [:index, :new, :create]
+  resources :posts, only: [:index, :new, :create] do
+    resources :comments, only: [:create]
+  end
 end
