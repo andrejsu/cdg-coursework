@@ -1,0 +1,9 @@
+<%= content_tag 'div', id: "like-#{post.id}" do %>
+  <%= link_to like_post_path(post), method: :patch, remote: true do %>
+    <% if current_user.voted_up_on? post %>
+      dislike
+    <% else %>
+      like
+    <% end %>
+  <% end %>
+<% end %>

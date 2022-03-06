@@ -5,6 +5,8 @@
     <li>
       <%= image_tag post.image_url %>
       <p><%= post.description %></p>
+      <%= render 'like_link', post: post %>
+      <%= render 'likes_score', post: post %>
       <small>Post by <%= post.user.nickname %></small>
       <br><br>
       <strong>Comments:</strong>
