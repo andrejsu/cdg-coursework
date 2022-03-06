@@ -18,6 +18,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    @post = Post.find(params[:id])
+    if current_user.voted_up_on? @post
+      @post.unliked_by current_user
+    else
+      @post.liked_by current_user
+    end
+    render 'like.js.erb'
+  end
+
   private
 
   def post_params

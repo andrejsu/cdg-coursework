@@ -42,3 +42,5 @@ yarn-debug.log*
 !/app/assets/builds/.keep
 
 coverage
+
+public/uploads
