@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     member do
       patch 'like', to: 'posts#like'
     end
+    resources :comments, only: [:create]
   end
 end
