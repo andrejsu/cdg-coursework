@@ -1,0 +1,9 @@
+<% unless is_current_user?(user) %>
+  <%= content_tag 'div', id: "follow-form" do %>
+    <% if current_user.following?(user) %>
+      <%= render partial: 'follows/unfollow_link', locals: { user: user } %>
+    <% else %>
+      <%= render partial: 'follows/follow_link', locals: { user: user } %>
+    <% end %>
+  <% end %>
+<% end %>
