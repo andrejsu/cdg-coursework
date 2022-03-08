@@ -1,26 +1,48 @@
-<h2>Log in</h2>
+<div class="hero w-min-screen py-10 bg-base-200">
+  <div class="hero-content flex-col-reverse lg:flex-row">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+                 html: { class: "card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100" }) do |f| %>
+      <div class="card-body">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="form-control">
+          <div class="label">
+            <%= f.label :email %>
+          </div>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="form-control">
+          <div class="label">
+            <%= f.label :password %>
+          </div>
+          <%= f.password_field :password, autocomplete: "current-password", class: "input input-bordered" %>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <% if devise_mapping.rememberable? %>
+          <div class="form-control">
+            <div class="label cursor-pointer">
+              <%= f.label :remember_me, class: "label-text" %>
+              <%= f.check_box :remember_me, class: "checkbox checkbox-xs" %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="form-control mt-6">
+          <%= f.submit "Log in", class: 'btn btn-primary' %>
+
+        </div>
+
+        <div class="flex-col-reverse form-control text-center">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="text-center">
+      <h1 class="text-5xl font-bold">Login now!</h1>
+      <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+

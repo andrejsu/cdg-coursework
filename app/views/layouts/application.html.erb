@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <title>CdgCoursework</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,11 +12,8 @@
   </head>
 
   <body>
-    <header>
-      <%= render 'public/header' %>
-    </header>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+    <%= render 'static_pages/header' %>
+    <%= yield %>
+    <%= render 'static_pages/footer' %>
   </body>
 </html>
