@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'users/registrations' }
+  devise_for :users, :controllers => { registrations: 'users/registrations' } do
+    get '/users', to: 'users/registrations#edit'
+  end
 
   root to: 'static_pages#homepage'
+
 
   resources :users, only: [:show] do
     member do
