@@ -20,11 +20,11 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 300 }
 
   def follow(other_user)
-    followings << other_user
+    following << other_user
   end
 
   def unfollow(other_user)
-    followings.delete(other_user)
+    following.delete(other_user)
   end
 
   def following?(other_user)

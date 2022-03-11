@@ -1,5 +1,0 @@
-<% if user_signed_in? %>
-  <%= controller.redirect_to posts_path %>
-<% else %>
-  <%= controller.redirect_to new_user_session_url %>
-<% end %>
