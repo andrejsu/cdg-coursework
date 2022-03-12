@@ -1,4 +1,14 @@
 <li>
-  <p><%= comment.content %></p>
-  <small>by <%= comment.user.nickname %></small>
+  <%= link_to comment.user.nickname, user_path(comment.user), class: "font-bold" %>
+  <div data-controller="truncator"
+       data-truncator-length-value="110">
+    <p data-truncator-target="content">
+      <%= comment.content %>
+    </p>
+    <button data-action="truncator#view"
+            data-truncator-target="button"
+            class="link">
+      more
+    </button>
+  </div>
 </li>

@@ -1,8 +1,12 @@
-<%= form_with model: [post, post.comments.build], local: false do |f| %>
-  <div class='field'>
-    <%= f.label :content %>
-    <%= f.text_area :content, placeholder: :content %>
-  </div>
+<div class="flex">
+  <textarea data-action="comment#active"
+            data-comment-target="content"
+            class="textarea textarea-bordered">
+  </textarea>
+  <button data-action="comment#post"
+          data-comment-target="button"
+          class="btn">
+    Post
+  </button>
+</div>
 
-  <%= f.submit %>
-<% end %>

@@ -7,7 +7,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.js
+        format.json do
+          render json: { entries: render_to_string(partial: 'comment', formats: [:html],
+                                                   locals: { comment: @comment }) }
+        end
       end
     end
   end

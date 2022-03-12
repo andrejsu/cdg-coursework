@@ -1,2 +1,2 @@
-var comments = document.querySelector('#comments');
+const comments = document.querySelector('#comments<%= @post.id %>>');
 comments.insertAdjacentHTML("beforeend", "<%= j render(@comment) %>");
