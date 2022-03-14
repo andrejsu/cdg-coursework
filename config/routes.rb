@@ -10,9 +10,7 @@ Rails.application.routes.draw do
   resources :follows, only: [:create, :destroy]
 
   resources :posts, only: [:index, :new, :create] do
-    member do
-      patch 'like', to: 'posts#like'
-    end
     resources :comments, only: [:create]
   end
+  resources :likes, only: [:create, :destroy]
 end

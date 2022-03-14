@@ -1,14 +1,5 @@
 <li>
   <%= link_to comment.user.nickname, user_path(comment.user), class: "font-bold" %>
-  <div data-controller="truncator"
-       data-truncator-length-value="110">
-    <p data-truncator-target="content">
-      <%= comment.content %>
-    </p>
-    <button data-action="truncator#view"
-            data-truncator-target="button"
-            class="link">
-      more
-    </button>
-  </div>
+  <%= render partial: 'shared/truncator', locals: { content: comment.content, length: 110} %>
+  <%= render partial: 'likes/likeable', locals: { likeable: comment } %>
 </li>

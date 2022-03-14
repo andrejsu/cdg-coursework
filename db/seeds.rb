@@ -31,12 +31,12 @@ end
 #   }
 # }
 
-all_users = User.all
-all_users.each { |user|
-  num_follow = rand(0..all_users.length)
-  all_users.shuffle[0..num_follow].each{ |other|
-    if user != other
-      user.follow(other)
-    end
-  }
-}
+# all_users = User.all
+# all_users.each { |user|
+#   num_follow = rand(0..all_users.length)
+#   all_users.shuffle[0..num_follow].each{ |other|
+#     if user != other
+#       user.follow(other)
+#     end
+#   }
+# }

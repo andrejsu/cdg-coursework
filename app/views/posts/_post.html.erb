@@ -4,24 +4,13 @@
 
     </div>
     <figure class="bg-base-200">
-      <%= image_tag post.image_url %>
+      <%= image_tag post.image_url, class: "w-full" %>
     </figure>
     <div class="card-body">
-      <%= render 'like_link', post: post %>
-      <%= render 'likes_score', post: post %>
+      <%= render partial: 'likes/likeable', locals: { likeable: post } %>
       <div>
         <span class="link link-hover font-bold"><%= link_to post.user.nickname, user_path(post.user) %></span>
-        <div data-controller="truncator"
-             data-truncator-length-value="110">
-          <p data-truncator-target="content">
-            <%= post.description %>
-          </p>
-          <button data-action="truncator#view"
-                  data-truncator-target="button"
-                  class="link">
-            more
-          </button>
-        </div>
+        <%= render partial: 'shared/truncator', locals: { content: post.description, length: 110 } %>
       </div>
       <div data-controller="comment"
            data-comment-disabled-class="btn-disabled"

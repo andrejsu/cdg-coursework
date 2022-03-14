@@ -4,10 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  acts_as_voter
-
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   has_many :follower_follows, foreign_key: :following_id, class_name: 'Follow', dependent: :destroy
   has_many :followers, through: :follower_follows, source: :follower
