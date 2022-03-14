@@ -1,0 +1,14 @@
+<div data-controller="counter"
+     data-counter-score-value="<%= user.followers.count %>">
+  <p>Followers: <span data-counter-target="score"></span></p>
+  <p>Followings: <%= user.followings.count %></p>
+
+  <% unless is_current_user?(user) %>
+    <% follow = current_user.following_follows.find_by(following_id: user.id) %>
+    <% if follow.nil? %>
+      <%= render partial: 'follows/follow_button', locals: { user: user } %>
+    <% else %>
+      <%= render partial: 'follows/unfollow_button', locals: { follow: follow } %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<div data-controller="switcher"
+     data-switcher-target="switcher"
+     data-switcher-url-value="<%= follows_path %>"
+     data-switcher-params-value="<%= { followed_id: user.id }.to_param %>">
+  <button data-action="switcher#on counter#add"
+          class="btn">
+    Follow
+  </button>
+</div>

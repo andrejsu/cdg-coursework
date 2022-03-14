@@ -17,20 +17,4 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: { case_sensitive: false }
   validates :name, length: { maximum: 50 }
   validates :bio, length: { maximum: 300 }
-
-  def follow(other_user)
-    following << other_user
-  end
-
-  def unfollow(other_user)
-    following.delete(other_user)
-  end
-
-  def following?(other_user)
-    followings.include?(other_user)
-  end
-
-  def followed_by?(other_user)
-    followers.include?(other_user)
-  end
 end

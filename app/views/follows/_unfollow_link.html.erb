@@ -1,3 +1,0 @@
-<%= form_with model: current_user.following_follows.find_by(following_id: user.id), local: false, method: :delete do |f| %>
-  <%= f.submit "Unfollow" %>
-<% end %>
