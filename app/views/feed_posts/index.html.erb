@@ -1,0 +1,9 @@
+<div class="w-min-screen py-10 bg-base-200">
+  <div class="font-title font-bold text-center text-4xl mb-5">
+    <h2 class="text-base-content">Posts</h2>
+  </div>
+  <ul>
+    <%= render @posts, class: "flex" %>
+  </ul>
+  <%== pagy_nav(@pagy) %>
+</div>
