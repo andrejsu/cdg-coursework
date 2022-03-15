@@ -19,24 +19,30 @@ User.create!(nickname: "andrew",
                password_confirmation: password)
 end
 
-# User.all.each { |user|
-#   num_posts = rand(1..30)
-#   num_posts.times {
-#     # uploader = ImageUploader.new(:cache)
-#     # image = uploader.upload(Faker::LoremFlickr.image)
-#     description = FFaker::Lorem.sentences(sentence_count = rand(1..5))
-#     post = user.posts.create(description: description)
-#     post.created_at = rand(1..60*24).minutes.ago
-#     post.save
-#   }
-# }
+uploader = ImageUploader.new(:cache)
 
-# all_users = User.all
-# all_users.each { |user|
-#   num_follow = rand(0..all_users.length)
-#   all_users.shuffle[0..num_follow].each{ |other|
-#     if user != other
-#       user.follow(other)
-#     end
-#   }
-# }
+
+
+
+User.all.each { |user|
+  num_posts = rand(1..2)
+  num_posts.times {
+    file = Down.download('https://picsum.photos/1080/1080')
+    uploaded_file = uploader.upload(file)
+
+    description = FFaker::Lorem.sentences(sentence_count = rand(1..5))
+    post = user.posts.create(description: description, image_data: uploaded_file.to_json)
+    post.created_at = rand(1..60*24).minutes.ago
+    post.save
+  }
+}
+
+all_users = User.all
+all_users.each { |user|
+  num_follow = rand(0..all_users.length)
+  all_users.shuffle[0..num_follow].each{ |other|
+    if user != other
+      Follow.create(follower: user, following: other)
+    end
+  }
+}
