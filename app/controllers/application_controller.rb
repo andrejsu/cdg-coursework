@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
+
   protect_from_forgery with: :exception, prepend: true
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -18,6 +20,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(source)
-    posts_path
+    feed_posts_path
   end
 end

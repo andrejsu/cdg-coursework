@@ -153,6 +153,8 @@ GEM
     nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (5.10.1)
+      activesupport
     parallel (1.21.0)
     parser (3.1.1.0)
       ast (~> 2.4.1)
@@ -334,11 +336,13 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  down (~> 5.0)
   fastimage
   ffaker
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.3)
+  pagy (~> 5.10)
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
