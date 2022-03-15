@@ -9,7 +9,7 @@ class FollowsController < ApplicationController
       if follow.save
         format.json do
           render json: { entries: render_to_string(partial: 'unfollow_button', formats: [:html],
-                                                   locals: { follow: follow }) }
+                                                   locals: { user: following_user }) }
         end
       end
     end
