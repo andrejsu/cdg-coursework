@@ -16,13 +16,14 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
 gem 'fastimage'
+gem "image_processing", "~> 1.8"
 gem 'shrine', '~> 3.0'
 gem 'shrine-cloudinary', '~> 1.1'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'ffaker'
   gem "down", "~> 5.0"
+  gem 'ffaker'
 
   gem 'rspec-rails', '~> 5.0.0'
 

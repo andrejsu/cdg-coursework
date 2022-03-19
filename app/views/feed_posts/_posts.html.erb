@@ -5,7 +5,7 @@
 
     </div>
     <figure class="bg-base-200">
-      <%= image_tag post.image_url, class: "w-full" %>
+      <%= image_tag post.image_url(:square), class: "w-full" %>
     </figure>
     <div class="card-body">
       <%= render partial: 'likes/likeable', locals: { likeable: post } %>
