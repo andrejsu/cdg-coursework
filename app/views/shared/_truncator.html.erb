@@ -1,11 +1,11 @@
-<div data-controller="truncator"
+<span data-controller="truncator"
      data-truncator-length-value="<%= length %>">
-  <p data-truncator-target="content">
-    <%= content %>
-  </p>
-  <button data-action="truncator#view"
-          data-truncator-target="button"
-          class="link">
-    more
-  </button>
-</div>
+    <span data-truncator-target="content">
+      <%= content %>
+    </span>
+    <button data-action="truncator#view"
+            data-truncator-target="button"
+            class="link text-gray-400">
+      more
+    </button>
+</span>

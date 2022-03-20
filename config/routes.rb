@@ -2,11 +2,7 @@ Rails.application.routes.draw do
   root to: 'feed_posts#index'
 
   devise_for :users
-  resources :users, only: [:show] do
-    member do
-      get :following, :followers
-    end
-  end
+  resources :users, only: [:show]
   resources :follows, only: [:create, :destroy]
 
   resources :feed_posts, only: [:index] do

@@ -9,17 +9,17 @@
     </figure>
     <div class="card-body">
       <%= render partial: 'likes/likeable', locals: { likeable: post } %>
-      <div>
+      <p>
         <span class="link link-hover font-bold"><%= link_to post.user.nickname, user_path(post.user) %></span>
         <%= render partial: 'shared/truncator', locals: { content: post.description, length: 110 } %>
-      </div>
+      </p>
+      <p class="uppercase text-xs text-gray-400"><%= time_ago_in_words(post.created_at) %> ago</p>
       <div data-controller="comment"
            data-comment-disabled-class="btn-disabled"
            data-comment-url-value="<%= post_comments_path(post) %>">
         <ul data-comment-target="comments">
           <%= render post.comments  %>
         </ul>
-        <span class="uppercase text-xs"><%= time_ago_in_words(post.created_at) %> ago</span>
         <%= render "comments/form" %>
       </div>
     </div>
