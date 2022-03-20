@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :name, :bio])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[username name bio])
   end
 
-  def after_sign_in_path_for(source)
+  def after_sign_in_path_for(_source)
     feed_posts_path
   end
 end

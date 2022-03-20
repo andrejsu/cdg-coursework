@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: %i[new create]
 
   def new
     @post = Post.new
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @post.save
-      redirect_to feed_posts_path, flash: { success: "Post was created successfully!" }
+      redirect_to feed_posts_path, flash: { success: 'Post was created successfully!' }
     else
       render :new, status: :unprocessable_entity
     end

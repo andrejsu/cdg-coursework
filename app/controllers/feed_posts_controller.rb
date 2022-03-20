@@ -11,11 +11,10 @@ class FeedPostsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {
+      format.json do
         render json: { entries: render_to_string(partial: 'posts', formats: [:html]),
-                                                 pagy: pagy_metadata(@pagy) }
-      }
+                       pagy: pagy_metadata(@pagy) }
+      end
     end
   end
-
 end
