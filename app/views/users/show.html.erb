@@ -1,3 +1,19 @@
-<p><%= @user.nickname %></p>
-<p><%= @user.email %></p>
-<%= render 'follows/follow', user: @user %>
+<div class="flex flex-col">
+  <p><%= @user.nickname %></p>
+  <p><%= @user.email %></p>
+  <%= render 'follows/follow', user: @user %>
+
+  <div class="divider"></div>
+
+  <div class="mb-16 mx-auto">
+    <ul class="grid grid-cols-3 gap-1">
+      <% @posts.each do |post| %>
+        <li>
+          <figure>
+            <%= image_tag post.image_url(:preview) %>
+          </figure>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

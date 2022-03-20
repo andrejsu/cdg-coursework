@@ -1,16 +1,9 @@
 <div class="w-min-screen py-10 bg-base-200">
-  <div class="font-title font-bold text-center text-4xl mb-5">
-    <h2 class="text-base-content">Posts</h2>
-  </div>
-
   <div data-controller="infinite-scroll"
        data-action="scroll@window->infinite-scroll#scroll"
        data-infinite-scroll-url-value="<%= @pagy_metadata[:next_url] %>">
     <ul data-infinite-scroll-target="entries">
       <%= render partial: 'posts', class: "flex" %>
     </ul>
-<!--    <div data-infinite-scroll-target="pagination">-->
-      <%#== pagy_nav(@pagy) %>
-<!--    </div>-->
   </div>
 </div>

@@ -13,7 +13,7 @@ User.create!(nickname: "john",
              password:              "619736",
              password_confirmation: "619736")
 
-98.times do |n|
+8.times do |n|
   nickname = FFaker::Internet.unique.user_name
   name  = FFaker::Name.name
   email = FFaker::Internet.unique.email
@@ -27,7 +27,7 @@ end
 
 
 User.all.each { |user|
-  num_posts = rand(1..2)
+  num_posts = rand(10..25)
   num_posts.times {
     file = Down.download("https://picsum.photos/1080/1080")
     description = FFaker::Lorem.sentences(sentence_count = rand(1..5))
