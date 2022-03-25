@@ -1,0 +1,9 @@
+<div data-controller="switcher"
+     data-switcher-target="switcher"
+     data-switcher-url-value="<%= likes_path %>"
+     data-switcher-params-value="<%= { likeable_id: likeable.id, likeable_type: likeable.class }.to_param('like') %>">
+  <button data-action="switcher#on counter#add"
+          class="btn">
+    Like
+  </button>
+</div>

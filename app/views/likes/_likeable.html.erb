@@ -1,0 +1,10 @@
+<% like = current_user.likes.find_by(likeable: likeable) %>
+<div data-controller="counter"
+     data-counter-score-value="<%= likeable.likes.count %>">
+  <p><span data-counter-target="score"></span> Likes</p>
+  <% if like.nil? %>
+    <%= render partial: 'likes/like_button', locals: { likeable: likeable } %>
+  <% else %>
+    <%= render partial: 'likes/dislike_button', locals: { like: like } %>
+  <% end %>
+</div>

@@ -1,0 +1,27 @@
+<% @posts.each do |post| %>
+  <li class="card md:w-3/4 lg:w-1/2 bg-base-100 shadow-xl mb-16 mx-auto">
+    <div class="card-body p-3 pl-8">
+      <h2 class="font-bold"><%= link_to post.user.nickname, user_path(post.user) %></h2>
+
+    </div>
+    <figure class="bg-base-200">
+      <%= image_tag post.image_url(:square), class: "w-full" %>
+    </figure>
+    <div class="card-body">
+      <%= render partial: 'likes/likeable', locals: { likeable: post } %>
+      <p>
+        <span class="link link-hover font-bold"><%= link_to post.user.nickname, user_path(post.user) %></span>
+        <%= render partial: 'shared/truncator', locals: { content: post.description, length: 110 } %>
+      </p>
+      <p class="uppercase text-xs text-gray-400"><%= time_ago_in_words(post.created_at) %> ago</p>
+      <div data-controller="comment"
+           data-comment-disabled-class="btn-disabled"
+           data-comment-url-value="<%= post_comments_path(post) %>">
+        <ul data-comment-target="comments">
+          <%= render post.comments  %>
+        </ul>
+        <%= render "comments/form" %>
+      </div>
+    </div>
+  </li>
+<% end %>

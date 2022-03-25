@@ -1,19 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'users/registrations' }
+  root to: 'feed_posts#index'
 
-  root to: 'static_pages#homepage'
-
-  resources :users, only: [:show] do
-    member do
-      get :following, :followers
-    end
-  end
+  devise_for :users
+  resources :users, only: [:show]
   resources :follows, only: [:create, :destroy]
 
-  resources :posts, only: [:index, :new, :create] do
-    member do
-      patch 'like', to: 'posts#like'
-    end
+  resources :feed_posts, only: [:index] do
     resources :comments, only: [:create]
   end
+
+  resources :posts, only: [:new, :create] do
+    resources :comments, only: [:create]
+  end
+  resources :likes, only: [:create, :destroy]
 end

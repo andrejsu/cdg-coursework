@@ -60,7 +60,6 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    acts_as_votable (0.13.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
@@ -121,6 +120,9 @@ GEM
       ffi-compiler (>= 1.0, < 2.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -142,6 +144,7 @@ GEM
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
+    mini_magick (4.11.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
     msgpack (1.4.5)
@@ -150,6 +153,8 @@ GEM
     nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (5.10.1)
+      activesupport
     parallel (1.22.0)
     parser (3.1.1.0)
       ast (~> 2.4.1)
@@ -244,6 +249,8 @@ GEM
     rubocop-rspec (2.9.0)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -324,16 +331,18 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  acts_as_votable
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
   devise
+  down (~> 5.0)
   fastimage
   ffaker
+  image_processing (~> 1.8)
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.3)
+  pagy (~> 5.10)
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)

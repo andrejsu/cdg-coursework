@@ -1,0 +1,46 @@
+<div data-controller="counter"
+     data-counter-score-value="<%= user.followers.count %>">
+  <p>Followers: <span data-counter-target="score"></span></p>
+  <p>Followings: <%= user.followings.count %></p>
+
+  <label for="my-modal-3" class="btn modal-button">Followings</label>
+
+  <input type="checkbox" id="my-modal-3" class="modal-toggle">
+  <label for="my-modal-3" class="modal cursor-pointer">
+    <label class="modal-box relative" for="">
+      <ul class="grid grid-cols-1 gap-4">
+        <% user.followings.each do |user| %>
+          <li>
+            <p class="font-bold"><%= user.nickname %></p>
+            <small><%= user.name %></small>
+          </li>
+        <% end %>
+      </ul>
+    </label>
+  </label>
+
+  <label for="my-modal-4" class="btn modal-button">Followers</label>
+
+  <input type="checkbox" id="my-modal-4" class="modal-toggle">
+  <label for="my-modal-4" class="modal cursor-pointer">
+    <label class="modal-box relative" for="">
+      <ul class="grid grid-cols-1 gap-4">
+        <% user.followers.each do |user| %>
+          <li>
+            <p class="font-bold"><%= user.nickname %></p>
+            <small><%= user.name %></small>
+          </li>
+        <% end %>
+      </ul>
+    </label>
+  </label>
+
+  <% unless is_current_user?(user) %>
+    <% follow = current_user.following_follows.find_by(following_id: user.id) %>
+    <% if follow.nil? %>
+      <%= render partial: 'follows/follow_button', locals: { user: user } %>
+    <% else %>
+      <%= render partial: 'follows/unfollow_button', locals: { follow: follow } %>
+    <% end %>
+  <% end %>
+</div>

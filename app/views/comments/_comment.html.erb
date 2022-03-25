@@ -1,4 +1,5 @@
 <li>
-  <p><%= comment.content %></p>
-  <small>by <%= comment.user.nickname %></small>
+  <%= link_to comment.user.nickname, user_path(comment.user), class: "font-bold" %>
+  <%= render partial: 'shared/truncator', locals: { content: comment.content, length: 110} %>
+  <%= render partial: 'likes/likeable', locals: { likeable: comment } %>
 </li>
