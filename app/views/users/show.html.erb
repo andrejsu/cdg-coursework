@@ -1,17 +1,18 @@
-<div class="flex flex-col">
-  <p><%= @user.nickname %></p>
-  <p><%= @user.email %></p>
-  <%= render 'follows/follow', user: @user %>
+<div class="flex flex-col min-h-screen py-10 bg-base-200 divide-y divide-solid divide-slate-400/25">
+  <div class="flex flex-col mx-auto min-w-[25%] max-w-[35%]">
+    <p class="text-4xl"><%= @user.nickname %></p>
+    <p class="font-bold"><%= @user.name %></p>
+    <%= render 'follows/follow', user: @user %>
+    <p><%= @user.bio %></p>
+  </div>
 
-  <div class="divider"></div>
-
-  <div class="mb-16 mx-auto">
+  <div class="mb-10 pt-6 mx-auto">
     <ul class="grid grid-cols-3 gap-1">
       <% @posts.each do |post| %>
-        <li>
-          <figure>
+        <li class="transform z-0 hover:z-10 transition duration-500 hover:scale-105">
+          <a href="<%= post_path(post) %>" >
             <%= image_tag post.image_url(:preview) %>
-          </figure>
+          </a>
         </li>
       <% end %>
     </ul>
