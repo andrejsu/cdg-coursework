@@ -1,5 +1,21 @@
-<li>
-  <%= link_to comment.user.nickname, user_path(comment.user), class: "font-bold" %>
-  <%= render partial: 'shared/truncator', locals: { content: comment.content, length: 110} %>
+<li data-controller="counter"
+    data-counter-score-value="<%= comment.likes.count %>"
+    class="flex justify-between">
+  <div class="flex flex-col mb-5">
+    <p class="mb-2">
+      <%= link_to comment.user.nickname, user_path(comment.user), class: "font-bold" %>
+      <%= render partial: 'shared/truncator', locals: { content: comment.content, length: 110} %>
+    </p>
+
+    <div class="flex flex-row items-center gap-4">
+      <div>
+        <p class="uppercase text-xs text-gray-400"><%= time_ago_in_words(comment.created_at) %> ago</p>
+      </div>
+      <div>
+        <label for="likeable-<%= comment.id %>" class="text-xs font-bold text-gray-400 cursor-pointer"><span data-counter-target="score"></span> likes</label>
+        <%= render partial: 'likes/likeable_list', locals: { likeable: comment }  %>
+      </div>
+    </div>
+  </div>
   <%= render partial: 'likes/likeable', locals: { likeable: comment } %>
 </li>
