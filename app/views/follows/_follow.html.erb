@@ -1,46 +1,66 @@
 <div data-controller="counter"
-     data-counter-score-value="<%= user.followers.count %>">
-  <p>Followers: <span data-counter-target="score"></span></p>
-  <p>Followings: <%= user.followings.count %></p>
+     data-counter-score-value="<%= user.followers.count %>"
+     class="my-8">
+  <div class="flex flex-col text-center">
+    <div class="flex justify-between items-center mb-4">
+      <p><span class="font-bold"><%= user.posts.count %></span> posts</p>
+      <label for="followings" class="cursor-pointer"><span data-counter-target="score" class="font-bold"></span> followers</label>
+      <label for="followers" class="cursor-pointer"><span class="font-bold"><%= user.followings.count %></span> following</label>
+    </div>
 
-  <label for="my-modal-3" class="btn modal-button">Followings</label>
-
-  <input type="checkbox" id="my-modal-3" class="modal-toggle">
-  <label for="my-modal-3" class="modal cursor-pointer">
-    <label class="modal-box relative" for="">
-      <ul class="grid grid-cols-1 gap-4">
-        <% user.followings.each do |user| %>
-          <li>
-            <p class="font-bold"><%= user.nickname %></p>
-            <small><%= user.name %></small>
-          </li>
-        <% end %>
-      </ul>
-    </label>
-  </label>
-
-  <label for="my-modal-4" class="btn modal-button">Followers</label>
-
-  <input type="checkbox" id="my-modal-4" class="modal-toggle">
-  <label for="my-modal-4" class="modal cursor-pointer">
-    <label class="modal-box relative" for="">
-      <ul class="grid grid-cols-1 gap-4">
-        <% user.followers.each do |user| %>
-          <li>
-            <p class="font-bold"><%= user.nickname %></p>
-            <small><%= user.name %></small>
-          </li>
-        <% end %>
-      </ul>
-    </label>
-  </label>
-
-  <% unless is_current_user?(user) %>
-    <% follow = current_user.following_follows.find_by(following_id: user.id) %>
-    <% if follow.nil? %>
-      <%= render partial: 'follows/follow_button', locals: { user: user } %>
-    <% else %>
-      <%= render partial: 'follows/unfollow_button', locals: { follow: follow } %>
+    <% unless is_current_user?(user) %>
+      <% follow = current_user.following_follows.find_by(following_id: user.id) %>
+      <% if follow.nil? %>
+        <%= render partial: 'follows/follow_button', locals: { user: user } %>
+      <% else %>
+        <%= render partial: 'follows/unfollow_button', locals: { follow: follow } %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
+  <input type="checkbox" id="followings" class="modal-toggle">
+  <label for="followings" class="modal cursor-pointer">
+    <label class="modal-box relative p-0" for="">
+      <ul class="flex flex-col divide-y divide-solid divide-slate-400/25">
+        <li class="p-5">
+          <p class="text-center font-bold text-2xl">Followings</p>
+        </li>
+        <% if user.followings.blank? %>
+          <li class="p-5">
+            <p>You don't follow anyone yet...</p>
+          </li>
+        <% else %>
+          <% user.followings.each do |user| %>
+            <li class="p-5">
+              <p class="font-bold"><%= user.nickname %></p>
+              <small><%= user.name %></small>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </label>
+  </label>
+
+  <input type="checkbox" id="followers" class="modal-toggle">
+  <label for="followers" class="modal cursor-pointer">
+    <label class="modal-box relative p-0" for="">
+      <ul class="flex flex-col divide-y divide-solid divide-slate-400/25">
+        <li class="p-5">
+          <p class="text-center font-bold text-2xl">Followers</p>
+        </li>
+        <% if user.followers.blank? %>
+          <li class="p-5">
+            <p>You don't have any subscribers yet...</p>
+          </li>
+        <% else %>
+          <% user.followers.each do |user| %>
+            <li class="p-5">
+              <p class="font-bold"><%= user.nickname %></p>
+              <small><%= user.name %></small>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </label>
+  </label>
 </div>

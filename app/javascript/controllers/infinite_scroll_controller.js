@@ -14,7 +14,7 @@ export default class extends Controller {
     }
 
     loadMore() {
-        if (this.loading) { return }
+        if (this.loading || this.urlValue === "/?page=") { return }
         this.loading = true
 
         Rails.ajax({
@@ -24,7 +24,7 @@ export default class extends Controller {
             success: (data) => {
                 this.entriesTarget.insertAdjacentHTML("beforeend", data.entries)
                 this.urlValue = data.pagy.next_url
-                console.log(data.pagy)
+                console.log(data.pagy.next_url)
                 this.loading = false
             }
         })

@@ -9,7 +9,7 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="card-body">
-        <div class="flex flex-col-reverse lg:flex-row">
+        <div class="flex flex-col lg:flex-row">
           <div class="lg:mx-10">
             <div class="form-control">
               <div class="label">
@@ -44,7 +44,7 @@
             <% end %>
           </div>
 
-          <div class="divider lg:divider-horizontal">OR</div>
+          <div class="divider lg:divider-horizontal"></div>
 
           <div class="lg:mx-10">
             <div class="form-control">
@@ -76,8 +76,10 @@
                 <i class="label-text-alt">(we need your current password to confirm your changes)</i>
               </div>
             </div>
+            <p class="text-xs mt-4">Unhappy?
+              <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'link link-hover link-primary' %>
+            </p>
           </div>
-
         </div>
 
         <div class="mt-10">
@@ -85,17 +87,6 @@
         </div>
       </div>
     <% end %>
-
-  <!--    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">-->
-  <!--      <div class="card-body">-->
-  <!--        <h3 class="text-center">Unhappy?</h3>-->
-
-  <!--        <div class="flex form-control text-center mt-5">-->
-  <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-primary' %>
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <%#= link_to "Back", :back %>
   </div>
 </div>
 

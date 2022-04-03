@@ -1,13 +1,21 @@
-<%= form_with model: post do |f| %>
-  <div class='field'>
-    <%= f.hidden_field :image, value: post.cached_image_data, id: nil %>
-    <%= f.file_field :image %>
-  </div>
+<%= form_with model: post, class: "card flex-shrink-0 w-full max-w-fit shadow-2xl bg-base-100 mx-auto" do |f| %>
+  <div class="card-body">
+    <div class="flex flex-col">
+      <div class="lg:mx-10 text-center">
+        <div class='form-control mb-5'>
+          <%= f.hidden_field :image, value: post.cached_image_data, id: nil %>
+          <%= f.file_field :image %>
+        </div>
 
-  <div class='field'>
-    <%= f.label :description %>
-    <%= f.text_area :description, placeholder: :description %>
-  </div>
+        <div class='form-control mb-10'>
+          <div class="label">
+            <%= f.label :description, class: "label-text" %>
+          </div>
+          <%= f.text_area :description, placeholder: :description, class: "textarea textarea-bordered" %>
+        </div>
 
-  <%= f.submit %>
+        <%= f.submit "Загрузить", class: 'btn btn-wide btn-primary' %>
+      </div>
+    </div>
+  </div>
 <% end %>
