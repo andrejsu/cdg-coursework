@@ -1,5 +1,5 @@
 <% @posts.each do |post| %>
-  <li class="card md:w-3/4 lg:w-1/2 max-w-fit bg-base-100 shadow-xl mb-16 mx-auto">
+  <li class="card md:w-3/4 lg:w-1/2 max-w-fit bg-base-100 md:shadow-xl mb-16 mx-auto">
     <div class="card-body p-3 pl-8">
       <h2 class="font-bold"><%= link_to post.user.nickname, user_path(post.user) %></h2>
 
