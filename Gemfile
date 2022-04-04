@@ -22,6 +22,8 @@ gem 'shrine-cloudinary', '~> 1.1'
 
 gem 'ffaker'
 
+gem 'pundit', '~> 2.2'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 

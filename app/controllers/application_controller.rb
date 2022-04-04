@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Authorization
   include Pagy::Backend
 
   protect_from_forgery with: :exception, prepend: true

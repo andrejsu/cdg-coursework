@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!, except: %i[show]
+  before_action :authorize_post!
+  after_action :verify_authorized
 
   def new
     @post = Post.new
@@ -24,5 +26,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:image, :description)
+  end
+
+  def authorize_post!
+    authorize(@post || Post)
   end
 end

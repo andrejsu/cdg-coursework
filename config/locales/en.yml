@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  global:
+    flash:
+      not_authorized: 'You are not authorized to perform this action!'
