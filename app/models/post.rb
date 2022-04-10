@@ -7,4 +7,5 @@ class Post < ApplicationRecord
   has_many :likes, as: :likeable, dependent: :destroy
 
   validates :image_data, presence: true
+  validates :description, presence: true, length: { maximum: 2200 }
 end
