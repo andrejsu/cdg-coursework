@@ -1,16 +1,21 @@
 class UsersController < ApplicationController
+  before_action :load_user
+
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts
   end
 
   def followers
-    @user = User.find(params[:id])
     @followers = @user.followers
   end
 
   def followings
-    @user = User.find(params[:id])
     @followings = @user.followings
+  end
+
+  private
+
+  def load_user
+    @user = User.find(params[:id])
   end
 end

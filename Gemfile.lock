@@ -99,6 +99,11 @@ GEM
     down (5.3.1)
       addressable (~> 2.8)
     erubi (1.10.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     fastimage (2.2.6)
     ffaker (2.20.0)
     ffi (1.15.5)
@@ -187,6 +192,10 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.5)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -327,6 +336,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   down (~> 5.0)
+  factory_bot_rails (~> 6.2)
   fastimage
   ffaker
   image_processing (~> 1.8)
@@ -339,6 +349,7 @@ DEPENDENCIES
   pundit (~> 2.2)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.6)
+  rails-controller-testing
   rspec-rails (~> 5.0.0)
   rubocop
   rubocop-performance

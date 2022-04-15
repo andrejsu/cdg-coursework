@@ -22,6 +22,14 @@ when :local
     cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"),
     store: Shrine::Storage::FileSystem.new("public", prefix: "uploads"),
   }
+
+when :test
+  require "shrine/storage/memory"
+
+  Shrine.storages = {
+    cache: Shrine::Storage::Memory.new,
+    store: Shrine::Storage::Memory.new,
+  }
 end
 
 Shrine.plugin :activerecord

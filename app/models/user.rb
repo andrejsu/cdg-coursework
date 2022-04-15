@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :followings, through: :following_follows, source: :following
 
   validates :nickname, presence: true, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :name, length: { maximum: 50 }
   validates :bio, length: { maximum: 300 }
 end
